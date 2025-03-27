@@ -1,0 +1,41 @@
+name: CI pipeline Frontend
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Ejecutar linter 
+        run: npm run lint
+        continue-on-error: true
+
+      - name: Ejecutar pruebas
+        run: npm test
+        continue-on-error: true
+
+      - name: Build de producción
+        run: npm run build
+
+      - name: Verificar salida
+        run: ls -la dist
+
+      - name: Subir artefacto
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-folder
+          path: dist
