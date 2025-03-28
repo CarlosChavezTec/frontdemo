@@ -78,7 +78,7 @@ Esto agregará reglas de accesibilidad recomendadas (como textos alternativos en
 
 Este proyecto tiene dos flujos automáticos configurados con GitHub Actions:
 
-### 1. `ci-react-vite.yml` – *Integración Continua (CI)*
+### 1. `build.yml` – *Integración Continua (CI)*
 Este flujo se ejecuta **cada vez que haces un push** y se encarga de:
 - Instalar dependencias
 - Ejecutar `npm run lint`
@@ -99,4 +99,14 @@ Sí, GitHub Actions **los ejecuta en paralelo**, pero como `deploy.yml` depende 
 En proyectos reales, podrías incluso hacer que `deploy.yml` solo se ejecute si el `ci.yml` pasa con éxito (usando `needs:` en YAML).
 
 ---
+
+### Comando adiconales
+
+git init
+git checkout --orphan backend/main
+touch README.md
+git add README.md
+git commit -m "Primer commit en rama vacía"
+git remote add origin https://github.com/CarlosChavezTec/frontdemo.git
+git push origin backend/main
 

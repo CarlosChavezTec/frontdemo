@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 const App = () => {
-  const unusedVariable = "No se usa pero genera warning";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,7 +16,7 @@ const App = () => {
         <h1 className="text-2xl font-bold mb-4 text-center text-blue-800">Formulario de saludo</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <label className="block">
-            <span className="text-gray-700">Tu nombre:</span>
+            <span className="text-gray-700">Tu comentario:</span>
             <input
               type="text"
               name="nombre"
